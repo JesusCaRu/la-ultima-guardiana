@@ -44,6 +44,22 @@ Abre [http://127.0.0.1:4173](http://127.0.0.1:4173). En Windows también puedes 
 
 > La web necesita servirse por HTTP para cargar correctamente los módulos y los modelos; abrir `index.html` directamente no es suficiente.
 
+### Ejecutarlo con Docker
+
+Con Docker y Docker Compose instalados, desde la carpeta del proyecto ejecuta:
+
+```bash
+docker compose up --build -d
+```
+
+Abre [http://localhost:8080](http://localhost:8080). Para detener y retirar el contenedor:
+
+```bash
+docker compose down
+```
+
+Docker sirve la web y los modelos; el navegador sigue necesitando conexión a internet para cargar Three.js y las fuentes. Si el puerto 8080 está ocupado, cambia el primer número de `8080:4173` en `compose.yaml`.
+
 ## Estructura
 
 ```text
@@ -54,6 +70,8 @@ Abre [http://127.0.0.1:4173](http://127.0.0.1:4173). En Windows también puedes 
 ├── espada_*.glb              # Espadas listas para la web
 ├── fractura_*.glb            # Piezas modeladas en Blender
 ├── blender/                  # Modelos y fracturas editables (.blend)
+├── Dockerfile                # Imagen de ejecución
+├── compose.yaml              # Arranque con Docker Compose
 └── servidor.cjs              # Servidor local sin dependencias
 ```
 

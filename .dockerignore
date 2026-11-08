@@ -1,0 +1,9 @@
+*
+!Dockerfile
+!servidor.cjs
+!index.html
+!style.css
+!main.js
+!music.js
+!*.glb
+

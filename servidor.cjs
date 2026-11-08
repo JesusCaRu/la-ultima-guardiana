@@ -2,6 +2,8 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const base = __dirname;
+const port = Number(process.env.PORT || 4173);
+const host = process.env.HOST || '127.0.0.1';
 const types = {'.html':'text/html; charset=utf-8','.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.glb':'model/gltf-binary'};
 http.createServer((req, res) => {
   const name = decodeURIComponent((req.url || '/').split('?')[0]);
@@ -12,5 +14,6 @@ http.createServer((req, res) => {
     res.writeHead(200, {'Content-Type': types[path.extname(file)] || 'application/octet-stream'});
     res.end(content);
   });
-}).listen(4173, '127.0.0.1', () => console.log('Web disponible en http://127.0.0.1:4173 — deja esta ventana abierta.'));
+}).listen(port, host, () => console.log(`Servidor disponible en ${host}:${port}`));
+
 
